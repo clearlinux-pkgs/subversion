@@ -5,5 +5,6 @@ libexpat.so.1
 liblz4.so.1
 libmagic.so.1
 libpthread.so.0
+libserf-1.so.1
 libsqlite3.so.0
 libz.so.1

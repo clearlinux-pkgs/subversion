@@ -1,8 +1,6 @@
 Configure miss: if gcc accepts -Werror=unknown-warning-option
 Configure miss: if g++ accepts -Werror=unknown-warning-option
 Configure miss: serf-2 library
-Configure miss: serf-1 library
-Configure miss: was serf enabled
 Configure miss: Apache module support via DSO through APXS
 Configure miss: sqlite amalgamation
 Configure miss: sqlite amalgamation

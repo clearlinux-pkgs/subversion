@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.10.0
-Release  : 1
+Release  : 2
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Summary  : Subversion Delta Library
@@ -22,6 +22,7 @@ BuildRequires : expat-dev
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pkgconfig(liblz4)
+BuildRequires : pkgconfig(serf-1)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : python-dev
 BuildRequires : python3-dev
@@ -86,9 +87,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1524244222
+export SOURCE_DATE_EPOCH=1524763757
 %configure --disable-static --with-utf8proc=internal \
---without-swig
+--without-swig \
+--with-serf
 make  %{?_smp_mflags}
 
 %check
@@ -99,7 +101,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1524244222
+export SOURCE_DATE_EPOCH=1524763757
 rm -rf %{buildroot}
 %make_install
 %find_lang subversion
@@ -177,6 +179,7 @@ rm -rf %{buildroot}
 /usr/lib64/libsvn_fs_x-1.so
 /usr/lib64/libsvn_ra-1.so
 /usr/lib64/libsvn_ra_local-1.so
+/usr/lib64/libsvn_ra_serf-1.so
 /usr/lib64/libsvn_ra_svn-1.so
 /usr/lib64/libsvn_repos-1.so
 /usr/lib64/libsvn_subr-1.so
@@ -190,6 +193,7 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/libsvn_fs_x.pc
 /usr/lib64/pkgconfig/libsvn_ra.pc
 /usr/lib64/pkgconfig/libsvn_ra_local.pc
+/usr/lib64/pkgconfig/libsvn_ra_serf.pc
 /usr/lib64/pkgconfig/libsvn_ra_svn.pc
 /usr/lib64/pkgconfig/libsvn_repos.pc
 /usr/lib64/pkgconfig/libsvn_subr.pc
@@ -221,6 +225,8 @@ rm -rf %{buildroot}
 /usr/lib64/libsvn_ra-1.so.0.0.0
 /usr/lib64/libsvn_ra_local-1.so.0
 /usr/lib64/libsvn_ra_local-1.so.0.0.0
+/usr/lib64/libsvn_ra_serf-1.so.0
+/usr/lib64/libsvn_ra_serf-1.so.0.0.0
 /usr/lib64/libsvn_ra_svn-1.so.0
 /usr/lib64/libsvn_ra_svn-1.so.0.0.0
 /usr/lib64/libsvn_repos-1.so.0
