@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.10.0
-Release  : 2
+Release  : 3
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Summary  : Subversion Delta Library
@@ -30,6 +30,7 @@ BuildRequires : ruby
 BuildRequires : sed
 BuildRequires : setuptools
 BuildRequires : sqlite-autoconf-dev
+Patch1: CVE-2017-9800.nopatch
 
 %description
 Subversion, a version control system.
@@ -87,7 +88,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1524763757
+export SOURCE_DATE_EPOCH=1524973063
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 %configure --disable-static --with-utf8proc=internal \
 --without-swig \
 --with-serf
@@ -101,7 +106,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1524763757
+export SOURCE_DATE_EPOCH=1524973063
 rm -rf %{buildroot}
 %make_install
 %find_lang subversion
