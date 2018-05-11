@@ -4,12 +4,12 @@
 #
 Name     : subversion
 Version  : 1.10.0
-Release  : 4
+Release  : 5
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Summary  : Subversion Delta Library
 Group    : Development/Tools
-License  : Apache-2.0 BSD-2-Clause MIT
+License  : Apache-2.0 BSD-2-Clause BSD-3-Clause MIT
 Requires: subversion-bin
 Requires: subversion-lib
 Requires: subversion-locales
@@ -88,11 +88,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1524973063
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export SOURCE_DATE_EPOCH=1526023858
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --with-utf8proc=internal \
 --without-swig \
 --with-serf
@@ -106,7 +106,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1524973063
+export SOURCE_DATE_EPOCH=1526023858
 rm -rf %{buildroot}
 %make_install
 %find_lang subversion
