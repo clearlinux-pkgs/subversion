@@ -24,7 +24,7 @@ BuildRequires : pip
 BuildRequires : pkgconfig(liblz4)
 BuildRequires : pkgconfig(serf-1)
 BuildRequires : pkgconfig(zlib)
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : ruby
 BuildRequires : sed
