@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.10.0
-Release  : 6
+Release  : 7
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.0.tar.bz2
 Summary  : Subversion Delta Library
