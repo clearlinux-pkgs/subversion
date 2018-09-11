@@ -6,10 +6,6 @@ Configure miss: sqlite amalgamation
 Configure miss: sqlite amalgamation
 Configure miss: whether libtool needs -no-undefined
 Configure miss: trang
-Configure miss: sasl/sasl.h usability
-Configure miss: sasl/sasl.h presence
-Configure miss: sasl/sasl.h
-Configure miss: availability of Cyrus SASL v2
 Configure miss: Mach-O dynamic module iteration functions
 Configure miss: Mac OS property list utilities
 Configure miss: Mac OS KeyChain Services
