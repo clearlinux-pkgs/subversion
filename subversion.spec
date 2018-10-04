@@ -4,17 +4,18 @@
 #
 Name     : subversion
 Version  : 1.10.2
-Release  : 8
+Release  : 9
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
 Summary  : Subversion Delta Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause MIT
-Requires: subversion-bin
-Requires: subversion-lib
-Requires: subversion-license
-Requires: subversion-locales
-Requires: subversion-man
+Requires: subversion-bin = %{version}-%{release}
+Requires: subversion-data = %{version}-%{release}
+Requires: subversion-lib = %{version}-%{release}
+Requires: subversion-license = %{version}-%{release}
+Requires: subversion-locales = %{version}-%{release}
+Requires: subversion-man = %{version}-%{release}
 BuildRequires : apr-dev
 BuildRequires : apr-util-dev
 BuildRequires : buildreq-distutils3
@@ -38,37 +39,39 @@ $LastChangedDate: 2016-05-31 14:07:51 +0000 (Tue, 31 May 2016) $
 %package bin
 Summary: bin components for the subversion package.
 Group: Binaries
-Requires: subversion-license
-Requires: subversion-man
+Requires: subversion-data = %{version}-%{release}
+Requires: subversion-license = %{version}-%{release}
+Requires: subversion-man = %{version}-%{release}
 
 %description bin
 bin components for the subversion package.
 
 
+%package data
+Summary: data components for the subversion package.
+Group: Data
+
+%description data
+data components for the subversion package.
+
+
 %package dev
 Summary: dev components for the subversion package.
 Group: Development
-Requires: subversion-lib
-Requires: subversion-bin
-Provides: subversion-devel
+Requires: subversion-lib = %{version}-%{release}
+Requires: subversion-bin = %{version}-%{release}
+Requires: subversion-data = %{version}-%{release}
+Provides: subversion-devel = %{version}-%{release}
 
 %description dev
 dev components for the subversion package.
 
 
-%package doc
-Summary: doc components for the subversion package.
-Group: Documentation
-Requires: subversion-man
-
-%description doc
-doc components for the subversion package.
-
-
 %package lib
 Summary: lib components for the subversion package.
 Group: Libraries
-Requires: subversion-license
+Requires: subversion-data = %{version}-%{release}
+Requires: subversion-license = %{version}-%{release}
 
 %description lib
 lib components for the subversion package.
@@ -109,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536631610
+export SOURCE_DATE_EPOCH=1538681706
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -127,19 +130,35 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1536631610
+## install_prepend content
+make swig-pl DESTDIR=%{buildroot}
+## install_prepend end
+export SOURCE_DATE_EPOCH=1538681706
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/subversion
-cp LICENSE %{buildroot}/usr/share/doc/subversion/LICENSE
-cp NOTICE %{buildroot}/usr/share/doc/subversion/NOTICE
-cp subversion/libsvn_subr/lz4/LICENSE %{buildroot}/usr/share/doc/subversion/subversion_libsvn_subr_lz4_LICENSE
-cp subversion/libsvn_subr/utf8proc/LICENSE.md %{buildroot}/usr/share/doc/subversion/subversion_libsvn_subr_utf8proc_LICENSE.md
-cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/doc/subversion/tools_dev_svnmover_linenoise_LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/subversion
+cp LICENSE %{buildroot}/usr/share/package-licenses/subversion/LICENSE
+cp NOTICE %{buildroot}/usr/share/package-licenses/subversion/NOTICE
+cp subversion/libsvn_subr/lz4/LICENSE %{buildroot}/usr/share/package-licenses/subversion/subversion_libsvn_subr_lz4_LICENSE
+cp subversion/libsvn_subr/utf8proc/LICENSE.md %{buildroot}/usr/share/package-licenses/subversion/subversion_libsvn_subr_utf8proc_LICENSE.md
+cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/package-licenses/subversion/tools_dev_svnmover_linenoise_LICENSE
 %make_install
 %find_lang subversion
+## install_append content
+make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64
+## install_append end
 
 %files
 %defattr(-,root,root,-)
+/usr/lib/perl5/5.26.1/x86_64-linux-thread-multi/perllocal.pod
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Base.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Client.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Core.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Delta.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Fs.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Ra.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Repos.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Wc.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Core/.packlist
 
 %files bin
 %defattr(-,root,root,-)
@@ -154,6 +173,10 @@ cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/doc/subversion/to
 /usr/bin/svnserve
 /usr/bin/svnsync
 /usr/bin/svnversion
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/package-licenses/subversion/NOTICE
 
 %files dev
 %defattr(-,root,root,-)
@@ -215,6 +238,8 @@ cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/doc/subversion/to
 /usr/lib64/libsvn_ra_svn-1.so
 /usr/lib64/libsvn_repos-1.so
 /usr/lib64/libsvn_subr-1.so
+/usr/lib64/libsvn_swig_perl-1.la
+/usr/lib64/libsvn_swig_perl-1.so
 /usr/lib64/libsvn_wc-1.so
 /usr/lib64/pkgconfig/libsvn_client.pc
 /usr/lib64/pkgconfig/libsvn_delta.pc
@@ -230,13 +255,24 @@ cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/doc/subversion/to
 /usr/lib64/pkgconfig/libsvn_repos.pc
 /usr/lib64/pkgconfig/libsvn_subr.pc
 /usr/lib64/pkgconfig/libsvn_wc.pc
-
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/subversion/NOTICE
+/usr/share/man/man3/SVN::Base.3
+/usr/share/man/man3/SVN::Client.3
+/usr/share/man/man3/SVN::Core.3
+/usr/share/man/man3/SVN::Delta.3
+/usr/share/man/man3/SVN::Fs.3
+/usr/share/man/man3/SVN::Ra.3
+/usr/share/man/man3/SVN::Repos.3
+/usr/share/man/man3/SVN::Wc.3
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Client/_Client.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Core/_Core.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Delta/_Delta.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Fs/_Fs.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Ra/_Ra.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Repos/_Repos.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Wc/_Wc.so
 /usr/lib64/libsvn_client-1.so.0
 /usr/lib64/libsvn_client-1.so.0.0.0
 /usr/lib64/libsvn_delta-1.so.0
@@ -263,18 +299,20 @@ cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/doc/subversion/to
 /usr/lib64/libsvn_repos-1.so.0.0.0
 /usr/lib64/libsvn_subr-1.so.0
 /usr/lib64/libsvn_subr-1.so.0.0.0
+/usr/lib64/libsvn_swig_perl-1.so.0
+/usr/lib64/libsvn_swig_perl-1.so.0.0.0
 /usr/lib64/libsvn_wc-1.so.0
 /usr/lib64/libsvn_wc-1.so.0.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/subversion/LICENSE
-/usr/share/doc/subversion/subversion_libsvn_subr_lz4_LICENSE
-/usr/share/doc/subversion/subversion_libsvn_subr_utf8proc_LICENSE.md
-/usr/share/doc/subversion/tools_dev_svnmover_linenoise_LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/subversion/LICENSE
+/usr/share/package-licenses/subversion/subversion_libsvn_subr_lz4_LICENSE
+/usr/share/package-licenses/subversion/subversion_libsvn_subr_utf8proc_LICENSE.md
+/usr/share/package-licenses/subversion/tools_dev_svnmover_linenoise_LICENSE
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/svn.1
 /usr/share/man/man1/svnadmin.1
 /usr/share/man/man1/svndumpfilter.1
