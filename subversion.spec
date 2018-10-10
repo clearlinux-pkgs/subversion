@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.10.2
-Release  : 9
+Release  : 10
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
 Summary  : Subversion Delta Library
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538681706
+export SOURCE_DATE_EPOCH=1539217323
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -133,7 +133,7 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
 ## install_prepend end
-export SOURCE_DATE_EPOCH=1538681706
+export SOURCE_DATE_EPOCH=1539217323
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/subversion
 cp LICENSE %{buildroot}/usr/share/package-licenses/subversion/LICENSE
@@ -145,11 +145,12 @@ cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/package-licenses/
 %find_lang subversion
 ## install_append content
 make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64
+rm -f %{buildroot}/usr/lib/perl5/*/*/perllocal.pod
+rm -f %{buildroot}/usr/lib64/*.la
 ## install_append end
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/5.26.1/x86_64-linux-thread-multi/perllocal.pod
 /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Base.pm
 /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Client.pm
 /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Core.pm
@@ -238,7 +239,6 @@ make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64
 /usr/lib64/libsvn_ra_svn-1.so
 /usr/lib64/libsvn_repos-1.so
 /usr/lib64/libsvn_subr-1.so
-/usr/lib64/libsvn_swig_perl-1.la
 /usr/lib64/libsvn_swig_perl-1.so
 /usr/lib64/libsvn_wc-1.so
 /usr/lib64/pkgconfig/libsvn_client.pc

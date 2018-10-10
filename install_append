@@ -1,1 +1,6 @@
 make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64
+
+# Clean up unwanted files.  These are usually handled as part of install step,
+# before we are able to install the bindings above.
+rm -f %{buildroot}/usr/lib/perl5/*/*/perllocal.pod
+rm -f %{buildroot}/usr/lib64/*.la
