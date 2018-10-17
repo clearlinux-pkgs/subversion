@@ -1,4 +1,4 @@
-make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64
+make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64 INSTALLDIRS=vendor
 
 # Clean up unwanted files.  These are usually handled as part of install step,
 # before we are able to install the bindings above.

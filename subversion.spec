@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.10.2
-Release  : 10
+Release  : 11
 URL      : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
 Source0  : http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
 Summary  : Subversion Delta Library
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539217323
+export SOURCE_DATE_EPOCH=1539808647
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -130,11 +130,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1539808647
+rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
 ## install_prepend end
-export SOURCE_DATE_EPOCH=1539217323
-rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/subversion
 cp LICENSE %{buildroot}/usr/share/package-licenses/subversion/LICENSE
 cp NOTICE %{buildroot}/usr/share/package-licenses/subversion/NOTICE
@@ -144,22 +144,22 @@ cp tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/package-licenses/
 %make_install
 %find_lang subversion
 ## install_append content
-make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64
+make install-swig-pl DESTDIR=%{buildroot} LIBRARY_PATH=%{buildroot}/usr/lib64 INSTALLDIRS=vendor
 rm -f %{buildroot}/usr/lib/perl5/*/*/perllocal.pod
 rm -f %{buildroot}/usr/lib64/*.la
 ## install_append end
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Base.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Client.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Core.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Delta.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Fs.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Ra.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Repos.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/SVN/Wc.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Core/.packlist
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Base.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Client.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Core.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Delta.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Fs.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Ra.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Repos.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/SVN/Wc.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Core/.packlist
 
 %files bin
 %defattr(-,root,root,-)
@@ -266,13 +266,13 @@ rm -f %{buildroot}/usr/lib64/*.la
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Client/_Client.so
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Core/_Core.so
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Delta/_Delta.so
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Fs/_Fs.so
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Ra/_Ra.so
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Repos/_Repos.so
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Wc/_Wc.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Client/_Client.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Core/_Core.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Delta/_Delta.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Fs/_Fs.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Ra/_Ra.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Repos/_Repos.so
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/SVN/_Wc/_Wc.so
 /usr/lib64/libsvn_client-1.so.0
 /usr/lib64/libsvn_client-1.so.0.0.0
 /usr/lib64/libsvn_delta-1.so.0
