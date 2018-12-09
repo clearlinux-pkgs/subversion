@@ -1,5 +1,5 @@
 PKG_NAME := subversion
-URL = http://mirror.cc.columbia.edu/pub/software/apache/subversion/subversion-1.10.2.tar.bz2
+URL = http://apache.osuosl.org/subversion/subversion-1.10.3.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
