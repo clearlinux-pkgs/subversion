@@ -6,3 +6,4 @@ dbus-dev
 doxygen
 expat-dev
 sqlite-autoconf-dev
+python
