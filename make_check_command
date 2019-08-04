@@ -1,1 +1,1 @@
-make check PYTHON=/usr/bin/python2
+make check PARALLEL=1

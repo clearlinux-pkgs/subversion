@@ -1,6 +1,9 @@
 # This file contains recursive sources that require this package
 cmake
+codec2
 compat-llvm-soname6
+compat-llvm-soname7
 digikam
+freedv
 llvm
 mercurial

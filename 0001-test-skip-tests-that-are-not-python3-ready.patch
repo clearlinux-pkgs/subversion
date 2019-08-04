@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Sun, 4 Aug 2019 15:52:23 -0700
+Subject: [PATCH] test: skip tests that are not python3-ready
+
+The test suite now runs with python3 only to prepare for python2 being
+removed from the distro. So mark any tests that are not python3-ready as
+XFail for now.
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ subversion/tests/cmdline/svnadmin_tests.py      | 1 +
+ subversion/tests/cmdline/tree_conflict_tests.py | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/subversion/tests/cmdline/svnadmin_tests.py b/subversion/tests/cmdline/svnadmin_tests.py
+index bb71d3a..1443a9b 100755
+--- a/subversion/tests/cmdline/svnadmin_tests.py
++++ b/subversion/tests/cmdline/svnadmin_tests.py
+@@ -3844,6 +3844,7 @@ def load_issue4725(sbox):
+   sbox2.build(create_wc=False, empty=True)
+   load_and_verify_dumpstream(sbox2, None, [], None, False, dump, '-M100')
+ 
++@XFail()
+ @Issue(4767)
+ def dump_no_canonicalize_svndate(sbox):
+   "svnadmin dump shouldn't canonicalize svn:date"
+diff --git a/subversion/tests/cmdline/tree_conflict_tests.py b/subversion/tests/cmdline/tree_conflict_tests.py
+index 61f3231..760680a 100755
+--- a/subversion/tests/cmdline/tree_conflict_tests.py
++++ b/subversion/tests/cmdline/tree_conflict_tests.py
+@@ -1507,6 +1507,7 @@ def update_delete_mixed_rev(sbox):
+   run_and_verify_info([expected_info], sbox.repo_url + '/A/B/E/alpha2')
+ 
+ # NB: This test will run forever if the bug it is testing for is present!
++@XFail()
+ def local_missing_dir_endless_loop(sbox):
+   "endless loop when resolving local-missing dir"
+ 
