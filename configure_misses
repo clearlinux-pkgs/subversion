@@ -10,7 +10,6 @@ Configure miss: Mach-O dynamic module iteration functions
 Configure miss: Mac OS property list utilities
 Configure miss: Mac OS KeyChain Services
 Configure miss: whether to look for old GNOME Keyring
-Configure miss: GNOME Keyring
 Configure miss: whether to look for KWallet
 Configure miss: JDK
 Configure miss: ctypesgen.py

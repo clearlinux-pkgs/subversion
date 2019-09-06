@@ -4,9 +4,9 @@
 #
 Name     : subversion
 Version  : 1.12.2
-Release  : 16
-URL      : https://apache.osuosl.org/subversion/subversion-1.12.2.tar.gz
-Source0  : https://apache.osuosl.org/subversion/subversion-1.12.2.tar.gz
+Release  : 17
+URL      : http://apache.osuosl.org/subversion/subversion-1.12.2.tar.gz
+Source0  : http://apache.osuosl.org/subversion/subversion-1.12.2.tar.gz
 Summary  : Subversion Delta Library
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause MIT
@@ -22,6 +22,7 @@ BuildRequires : cyrus-sasl-dev
 BuildRequires : dbus-dev
 BuildRequires : doxygen
 BuildRequires : expat-dev
+BuildRequires : libsecret-dev
 BuildRequires : pkgconfig(liblz4)
 BuildRequires : pkgconfig(serf-1)
 BuildRequires : pkgconfig(zlib)
@@ -102,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567296669
+export SOURCE_DATE_EPOCH=1567813952
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -110,7 +111,8 @@ export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-reg
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --with-utf8proc=internal \
 --without-swig \
---with-serf
+--with-serf \
+--with-gnome-keyring
 make  %{?_smp_mflags}
 
 %check
@@ -121,7 +123,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check PARALLEL=1
 
 %install
-export SOURCE_DATE_EPOCH=1567296669
+export SOURCE_DATE_EPOCH=1567813952
 rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
@@ -214,6 +216,7 @@ rm -f %{buildroot}/usr/lib64/*.la
 /usr/include/subversion-1/svn_wc.h
 /usr/include/subversion-1/svn_x509.h
 /usr/include/subversion-1/svn_xml.h
+/usr/lib64/libsvn_auth_gnome_keyring-1.so
 /usr/lib64/libsvn_client-1.so
 /usr/lib64/libsvn_delta-1.so
 /usr/lib64/libsvn_diff-1.so
@@ -229,6 +232,7 @@ rm -f %{buildroot}/usr/lib64/*.la
 /usr/lib64/libsvn_subr-1.so
 /usr/lib64/libsvn_swig_perl-1.so
 /usr/lib64/libsvn_wc-1.so
+/usr/lib64/pkgconfig/libsvn_auth_gnome_keyring.pc
 /usr/lib64/pkgconfig/libsvn_client.pc
 /usr/lib64/pkgconfig/libsvn_delta.pc
 /usr/lib64/pkgconfig/libsvn_diff.pc
@@ -261,6 +265,8 @@ rm -f %{buildroot}/usr/lib64/*.la
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/SVN/_Ra/_Ra.so
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/SVN/_Repos/_Repos.so
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/SVN/_Wc/_Wc.so
+/usr/lib64/libsvn_auth_gnome_keyring-1.so.0
+/usr/lib64/libsvn_auth_gnome_keyring-1.so.0.0.0
 /usr/lib64/libsvn_client-1.so.0
 /usr/lib64/libsvn_client-1.so.0.0.0
 /usr/lib64/libsvn_delta-1.so.0

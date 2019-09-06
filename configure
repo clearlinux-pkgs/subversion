@@ -1,3 +1,4 @@
 --with-utf8proc=internal
 --without-swig
 --with-serf
+--with-gnome-keyring

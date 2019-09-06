@@ -1,3 +1,6 @@
+libsvn_auth_gnome_keyring-1.so.0:svn_auth_get_gnome_keyring_simple_provider
+libsvn_auth_gnome_keyring-1.so.0:svn_auth_get_gnome_keyring_ssl_client_cert_pw_provider
+libsvn_auth_gnome_keyring-1.so.0:svn_auth_gnome_keyring_version
 libsvn_client-1.so.0:svn_cl__rev_default_to_head_or_base
 libsvn_client-1.so.0:svn_cl__rev_default_to_head_or_working
 libsvn_client-1.so.0:svn_cl__rev_default_to_peg
