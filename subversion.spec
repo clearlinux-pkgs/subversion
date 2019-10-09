@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.12.2
-Release  : 18
+Release  : 19
 URL      : https://apache.osuosl.org/subversion/subversion-1.12.2.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.12.2.tar.gz
 Summary  : Subversion Delta Library
@@ -26,7 +26,7 @@ BuildRequires : libsecret-dev
 BuildRequires : pkgconfig(liblz4)
 BuildRequires : pkgconfig(serf-1)
 BuildRequires : pkgconfig(zlib)
-BuildRequires : python
+BuildRequires : python3
 BuildRequires : ruby
 BuildRequires : sed
 BuildRequires : sqlite-autoconf-dev
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568055092
+export SOURCE_DATE_EPOCH=1570658295
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -123,7 +123,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check PARALLEL=1
 
 %install
-export SOURCE_DATE_EPOCH=1568055092
+export SOURCE_DATE_EPOCH=1570658295
 rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
