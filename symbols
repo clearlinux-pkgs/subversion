@@ -661,6 +661,7 @@ libsvn_fs-1.so.0:svn_fs_info_config_files
 libsvn_fs-1.so.0:svn_fs_info_dup
 libsvn_fs-1.so.0:svn_fs_info_format
 libsvn_fs-1.so.0:svn_fs_initialize
+libsvn_fs-1.so.0:svn_fs_ioctl
 libsvn_fs-1.so.0:svn_fs_is_dir
 libsvn_fs-1.so.0:svn_fs_is_file
 libsvn_fs-1.so.0:svn_fs_is_revision_root
@@ -851,6 +852,7 @@ libsvn_fs_fs-1.so.0:svn_fs_fs__get_packed_offset
 libsvn_fs_fs-1.so.0:svn_fs_fs__get_proplist
 libsvn_fs_fs-1.so.0:svn_fs_fs__get_rep_reference
 libsvn_fs_fs-1.so.0:svn_fs_fs__get_revision_proplist
+libsvn_fs_fs-1.so.0:svn_fs_fs__get_revision_props_size
 libsvn_fs_fs-1.so.0:svn_fs_fs__get_sharded_offset
 libsvn_fs_fs-1.so.0:svn_fs_fs__get_stats
 libsvn_fs_fs-1.so.0:svn_fs_fs__get_txn
@@ -981,6 +983,7 @@ libsvn_fs_fs-1.so.0:svn_fs_fs__reset_txn_filesize
 libsvn_fs_fs-1.so.0:svn_fs_fs__rev_get_root
 libsvn_fs_fs-1.so.0:svn_fs_fs__revision_prop
 libsvn_fs_fs-1.so.0:svn_fs_fs__revision_root
+libsvn_fs_fs-1.so.0:svn_fs_fs__revision_size
 libsvn_fs_fs-1.so.0:svn_fs_fs__serialize_changes
 libsvn_fs_fs-1.so.0:svn_fs_fs__serialize_dir_entries
 libsvn_fs_fs-1.so.0:svn_fs_fs__serialize_id
