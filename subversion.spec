@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.13.0
-Release  : 24
+Release  : 25
 URL      : https://apache.osuosl.org/subversion/subversion-1.13.0.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.13.0.tar.gz
 Summary  : Subversion Delta Library
@@ -115,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591151958
+export SOURCE_DATE_EPOCH=1616077451
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -135,7 +135,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check PARALLEL=1
 
 %install
-export SOURCE_DATE_EPOCH=1591151958
+export SOURCE_DATE_EPOCH=1616077451
 rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
@@ -319,22 +319,22 @@ rm -f %{buildroot}/usr/lib64/*.la
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Base.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Client.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Core.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Delta.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Fs.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Ra.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Repos.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/SVN/Wc.pm
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Client/_Client.so
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Core/.packlist
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Core/_Core.so
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Delta/_Delta.so
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Fs/_Fs.so
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Ra/_Ra.so
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Repos/_Repos.so
-/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/SVN/_Wc/_Wc.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Base.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Client.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Core.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Delta.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Fs.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Ra.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Repos.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/SVN/Wc.pm
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Client/_Client.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Core/.packlist
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Core/_Core.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Delta/_Delta.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Fs/_Fs.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Ra/_Ra.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Repos/_Repos.so
+/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/SVN/_Wc/_Wc.so
 
 %files locales -f subversion.lang
 %defattr(-,root,root,-)

@@ -1,7 +1,5 @@
 # This file contains recursive sources that require this package
 cmake
-compat-llvm-soname5
-compat-llvm-soname6
 digikam
 llvm8
 llvm9
