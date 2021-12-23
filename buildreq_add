@@ -8,3 +8,4 @@ expat-dev
 libsecret-dev
 sqlite-autoconf-dev
 python3
+serf-dev

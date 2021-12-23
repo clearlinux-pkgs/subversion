@@ -1,5 +1,4 @@
 # This file contains recursive sources that require this package
-R-rgdal
 cmake
 digikam
 llvm8

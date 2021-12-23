@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.14.1
-Release  : 28
+Release  : 29
 URL      : https://apache.osuosl.org/subversion/subversion-1.14.1.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.14.1.tar.gz
 Summary  : Subversion Working Copy Library
@@ -31,6 +31,7 @@ BuildRequires : pkgconfig(zlib)
 BuildRequires : python3
 BuildRequires : ruby
 BuildRequires : sed
+BuildRequires : serf-dev
 BuildRequires : sqlite-autoconf-dev
 Patch1: 0001-test-skip-tests-that-are-not-python3-ready.patch
 
@@ -115,7 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621899962
+export SOURCE_DATE_EPOCH=1640291966
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -135,7 +136,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check PARALLEL=1 || :
 
 %install
-export SOURCE_DATE_EPOCH=1621899962
+export SOURCE_DATE_EPOCH=1640291966
 rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
