@@ -1,6 +1,5 @@
 # This file contains recursive sources that require this package
 cmake
 digikam
-llvm8
-llvm9
+krita
 mercurial
