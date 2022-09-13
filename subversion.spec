@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.14.2
-Release  : 32
+Release  : 33
 URL      : https://apache.osuosl.org/subversion/subversion-1.14.2.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.14.2.tar.gz
 Summary  : Subversion SVN Protocol Repository Access Library
@@ -116,7 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654298467
+export SOURCE_DATE_EPOCH=1663090783
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -136,16 +136,16 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check PARALLEL=1 || :
 
 %install
-export SOURCE_DATE_EPOCH=1654298467
+export SOURCE_DATE_EPOCH=1663090783
 rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
 ## install_prepend end
 mkdir -p %{buildroot}/usr/share/package-licenses/subversion
-cp %{_builddir}/subversion-1.14.2/LICENSE %{buildroot}/usr/share/package-licenses/subversion/2001ec12a76fab136661bf0850b354ce06312809
-cp %{_builddir}/subversion-1.14.2/subversion/libsvn_subr/lz4/LICENSE %{buildroot}/usr/share/package-licenses/subversion/10bf56381baaf07f0647b93a810eb4e7e9545e8d
-cp %{_builddir}/subversion-1.14.2/subversion/libsvn_subr/utf8proc/LICENSE.md %{buildroot}/usr/share/package-licenses/subversion/1383cee8b844e0df97aea12a3ea98912af5081dd
-cp %{_builddir}/subversion-1.14.2/tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/package-licenses/subversion/3bd655bcdbe6f4f14e9da385f1953c50dd89ea8e
+cp %{_builddir}/subversion-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/subversion/2001ec12a76fab136661bf0850b354ce06312809 || :
+cp %{_builddir}/subversion-%{version}/subversion/libsvn_subr/lz4/LICENSE %{buildroot}/usr/share/package-licenses/subversion/10bf56381baaf07f0647b93a810eb4e7e9545e8d || :
+cp %{_builddir}/subversion-%{version}/subversion/libsvn_subr/utf8proc/LICENSE.md %{buildroot}/usr/share/package-licenses/subversion/1383cee8b844e0df97aea12a3ea98912af5081dd || :
+cp %{_builddir}/subversion-%{version}/tools/dev/svnmover/linenoise/LICENSE %{buildroot}/usr/share/package-licenses/subversion/3bd655bcdbe6f4f14e9da385f1953c50dd89ea8e || :
 %make_install
 %find_lang subversion
 ## install_append content
