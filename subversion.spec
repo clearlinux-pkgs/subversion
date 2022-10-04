@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.14.2
-Release  : 33
+Release  : 34
 URL      : https://apache.osuosl.org/subversion/subversion-1.14.2.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.14.2.tar.gz
 Summary  : Subversion SVN Protocol Repository Access Library
@@ -116,12 +116,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663090783
+export SOURCE_DATE_EPOCH=1664905942
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --with-utf8proc=internal \
 --without-swig \
 --with-serf \
@@ -136,7 +136,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check PARALLEL=1 || :
 
 %install
-export SOURCE_DATE_EPOCH=1663090783
+export SOURCE_DATE_EPOCH=1664905942
 rm -rf %{buildroot}
 ## install_prepend content
 make swig-pl DESTDIR=%{buildroot}
