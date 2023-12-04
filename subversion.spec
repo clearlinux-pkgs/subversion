@@ -4,7 +4,7 @@
 #
 Name     : subversion
 Version  : 1.14.2
-Release  : 36
+Release  : 37
 URL      : https://apache.osuosl.org/subversion/subversion-1.14.2.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.14.2.tar.gz
 Summary  : Subversion SVN Protocol Repository Access Library
