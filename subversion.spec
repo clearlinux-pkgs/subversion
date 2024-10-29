@@ -7,7 +7,7 @@
 #
 Name     : subversion
 Version  : 1.14.3
-Release  : 39
+Release  : 40
 URL      : https://apache.osuosl.org/subversion/subversion-1.14.3.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.14.3.tar.gz
 Summary  : Subversion Delta Library
