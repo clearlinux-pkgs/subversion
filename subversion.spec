@@ -7,7 +7,7 @@
 #
 Name     : subversion
 Version  : 1.14.5
-Release  : 42
+Release  : 43
 URL      : https://apache.osuosl.org/subversion/subversion-1.14.5.tar.gz
 Source0  : https://apache.osuosl.org/subversion/subversion-1.14.5.tar.gz
 Summary  : Subversion Repository Filesystem Library
